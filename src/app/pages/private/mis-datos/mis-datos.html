@@ -1,0 +1,163 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h5 class="fw-bold mb-0">Mis datos</h5>
+  <div class="dropdown">
+    <a href="#" class="btn btn-outline-secondary d-flex align-items-center gap-2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-regular fa-circle-user"></i>
+      <span class="small fw-semibold">Mi cuenta</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/portal/mis-datos">
+          <i class="fa-regular fa-user"></i> Mis datos
+        </a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2 text-danger" routerLink="/usuario/iniciar-sesion">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- CARGANDO -->
+@if (cargando) {
+<div class="text-center py-5">
+  <div class="spinner-border text-primary"></div>
+  <p class="mt-2 text-muted small">Cargando datos...</p>
+</div>
+}
+
+<!-- PERFIL -->
+@if (!cargando && usuario) {
+<div class="bg-white border rounded-3 p-4 mb-4">
+  <div class="d-flex align-items-center gap-4 mb-4">
+    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
+      style="width:72px;height:72px;">
+      <i class="fa-regular fa-user fa-2x text-primary"></i>
+    </div>
+    <div>
+      <h5 class="fw-bold mb-0">{{ usuario.nombre_completo }}</h5>
+      <span class="text-muted small">Paciente registrado</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- VISTA DE DATOS -->
+  @if (!editando) {
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Nombre completo</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-regular fa-user text-primary"></i>
+        <span>{{ usuario.nombre_completo }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Tipo y número de documento</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-regular fa-id-card text-primary"></i>
+        <span>{{ usuario.tipo_documento }} · {{ usuario.valor_documento }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Correo electrónico</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-regular fa-envelope text-primary"></i>
+        <span>{{ usuario.correo }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Número de celular</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-solid fa-phone text-primary"></i>
+        <span>+51 {{ usuario.celular }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Fecha de nacimiento</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-regular fa-calendar text-primary"></i>
+        <span>{{ usuario.fecha_nacimiento }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small text-muted fw-semibold">Dirección</label>
+      <div class="d-flex align-items-center gap-2 bg-light rounded-3 p-3">
+        <i class="fa-solid fa-location-dot text-primary"></i>
+        <span>{{ usuario.direccion }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-end mt-4">
+    <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirEdicion()">
+      <i class="fa-regular fa-pen-to-square"></i> Editar datos
+    </button>
+  </div>
+  }
+
+  <!-- FORMULARIO EDICIÓN -->
+  @if (editando) {
+  <form [formGroup]="editForm" (ngSubmit)="guardar()">
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Correo electrónico</label>
+        <input type="email" class="form-control" formControlName="correo"
+          [class.is-invalid]="correo?.invalid && correo?.touched">
+        @if (correo?.invalid && correo?.touched) {
+        <div class="text-danger small mt-1">Ingresa un correo válido</div>
+        }
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Número de celular</label>
+        <div class="input-group">
+          <span class="input-group-text">+51</span>
+          <input type="tel" class="form-control" formControlName="celular" maxlength="9"
+            [class.is-invalid]="celular?.invalid && celular?.touched">
+        </div>
+        @if (celular?.invalid && celular?.touched) {
+        <div class="text-danger small mt-1">Debe tener 9 dígitos</div>
+        }
+      </div>
+
+      <div class="col-12">
+        <label class="form-label small fw-semibold">Dirección</label>
+        <input type="text" class="form-control" formControlName="direccion"
+          [class.is-invalid]="direccion?.invalid && direccion?.touched">
+        @if (direccion?.invalid && direccion?.touched) {
+        <div class="text-danger small mt-1">La dirección es requerida</div>
+        }
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="button" class="btn btn-outline-secondary" (click)="cancelarEdicion()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary d-flex align-items-center gap-2" [disabled]="guardando">
+        <i class="fa-regular fa-floppy-disk"></i>
+        {{ guardando ? 'Guardando...' : 'Guardar cambios' }}
+      </button>
+    </div>
+  </form>
+  }
+
+</div>
+}

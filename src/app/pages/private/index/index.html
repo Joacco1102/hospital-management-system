@@ -1,0 +1,90 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h5 class="fw-bold mb-0">¡Bienvenido, Paciente!</h5>
+
+  <!-- Icono usuario con dropdown -->
+  <div class="dropdown">
+    <a href="#" class="btn btn-outline-secondary d-flex align-items-center gap-2"
+       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-regular fa-circle-user"></i>
+      <span class="small fw-semibold">Mi cuenta</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/portal/mis-datos">
+          <i class="fa-regular fa-user"></i> Mis datos
+        </a>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2 text-danger" routerLink="/usuario/iniciar-sesion">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- PRÓXIMA CITA -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-8">
+
+    <!-- Accesos rápidos -->
+    <h6 class="fw-bold mb-3">Accesos rápidos</h6>
+    <div class="row g-3">
+
+      <div class="col-md-4">
+        <a routerLink="/portal/agendar-cita" class="text-decoration-none">
+          <div class="bg-white border rounded-3 p-3 h-100 acceso-card">
+            <i class="fa-regular fa-calendar-plus text-primary mb-2 fa-lg"></i>
+            <h6 class="fw-semibold mb-1">Agendar cita</h6>
+            <p class="text-muted small mb-0">Reserva tu próxima consulta médica.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a routerLink="/portal/mis-citas" class="text-decoration-none">
+          <div class="bg-white border rounded-3 p-3 h-100 acceso-card">
+            <i class="fa-regular fa-calendar text-primary mb-2 fa-lg"></i>
+            <h6 class="fw-semibold mb-1">Mis citas</h6>
+            <p class="text-muted small mb-0">Revisa tus citas programadas.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a routerLink="/portal/documentos" class="text-decoration-none">
+          <div class="bg-white border rounded-3 p-3 h-100 acceso-card">
+            <i class="fa-regular fa-file-lines text-primary mb-2 fa-lg"></i>
+            <h6 class="fw-semibold mb-1">Documentos clínicos</h6>
+            <p class="text-muted small mb-0">Accede a tus resultados y exámenes.</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Próxima cita -->
+  <div class="col-lg-4">
+    <h6 class="fw-bold mb-3">Próxima cita</h6>
+    <div class="bg-white border rounded-3 p-4 text-center">
+      <i class="fa-regular fa-calendar-xmark text-muted fa-2x mb-3"></i>
+      <p class="text-muted small mb-3">No tienes citas programadas por el momento.</p>
+      <a routerLink="/portal/agendar-cita" class="btn btn-primary btn-sm px-4">
+        Agendar cita
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ÚLTIMAS CITAS -->
+<div class="bg-white border rounded-3 p-4">
+  <h6 class="fw-bold mb-3">Últimas citas</h6>
+  <div class="text-center py-4 text-muted">
+    <i class="fa-regular fa-folder-open fa-2x mb-2"></i>
+    <p class="small mb-0">No hay citas registradas aún.</p>
+  </div>
+</div>

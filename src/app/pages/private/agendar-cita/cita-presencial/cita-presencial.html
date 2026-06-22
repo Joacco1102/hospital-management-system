@@ -1,0 +1,83 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex align-items-center gap-2">
+    <a routerLink="/portal/agendar-cita" class="btn btn-sm btn-outline-secondary">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <h5 class="fw-bold mb-0">Cita presencial</h5>
+  </div>
+</div>
+
+<!-- FORMULARIO -->
+<div class="bg-white border rounded-3 p-4">
+  <form [formGroup]="citaForm" (ngSubmit)="confirmar()">
+    <div class="row g-4">
+
+      <!-- ESPECIALIDAD -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Especialidad *</label>
+        <select class="form-select" formControlName="especialidad">
+          <option value="">Selecciona especialidad</option>
+          @for (esp of especialidades; track $index) {
+          <option [value]="esp">{{ esp }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- MÉDICO -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Médico *</label>
+        <select class="form-select" formControlName="medico">
+          <option value="">Selecciona médico</option>
+          @for (med of medicosFiltrados; track med.idMedico) {
+          <option [value]="med.nombre">{{ med.nombre }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- FECHA -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Fecha *</label>
+        <input type="date" class="form-control" formControlName="fecha">
+      </div>
+
+      <!-- HORA -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Hora *</label>
+        <select class="form-select" formControlName="hora">
+          <option value="">Selecciona hora</option>
+          <option>08:00</option>
+          <option>09:00</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+        </select>
+      </div>
+
+      <!-- MOTIVO -->
+      <div class="col-12">
+        <label class="form-label small fw-semibold">Motivo</label>
+        <textarea class="form-control" formControlName="motivo"></textarea>
+      </div>
+
+      <!-- SEGURO -->
+      <div class="col-12">
+        <label class="form-label small fw-semibold">Seguro</label>
+        <div class="d-flex gap-3">
+          <input type="radio" formControlName="seguro" value="sis"> SIS
+          <input type="radio" formControlName="seguro" value="particular"> Particular
+        </div>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+      <button class="btn btn-primary" type="submit" [disabled]="cargando">
+        {{ cargando ? 'Guardando...' : 'Confirmar cita' }}
+      </button>
+    </div>
+
+  </form>
+</div>

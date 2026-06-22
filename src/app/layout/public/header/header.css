@@ -1,0 +1,11 @@
+.nav-item.dropdown > .nav-link::after {
+  display: none;
+}
+
+.nav-item.dropdown .dropdown-menu {
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: 100%;
+  margin-top: 0.5rem;
+}

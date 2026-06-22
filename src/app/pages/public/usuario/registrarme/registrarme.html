@@ -1,0 +1,173 @@
+<div class="login-wrapper">
+
+  <!-- LADO IZQUIERDO: imagen -->
+  <div class="login-left">
+    <img src="./img2.jpg" alt="Hospital San José" class="login-img">
+    <div class="login-overlay">
+      <div class="login-overlay-text">
+        <p class="text-white fs-4">Tu salud,</p>
+        <h2 class="text-white fw-bold display-5">nuestra<br>prioridad</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- LADO DERECHO: formulario -->
+  <div class="login-right">
+
+    <!-- Logo -->
+    <div class="mb-4">
+      <img src="./logo_hospital.png" alt="Hospital San José" height="60" onerror="this.style.display='none'">
+    </div>
+
+    <h3 class="fw-bold mb-1">Crear una cuenta</h3>
+    <p class="text-muted small mb-4">Completa tus datos para registrarte en el portal</p>
+
+    <!-- FORMULARIO -->
+    <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+
+      <!-- Tipo de documento -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Tipo de documento <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="tipoDocumento"
+          [class.is-invalid]="tipoDocumento?.invalid && tipoDocumento?.touched">
+          <option value="">Selecciona un tipo</option>
+          <option>DNI</option>
+          <option>Carnet de Extranjería</option>
+          <option>Pasaporte</option>
+        </select>
+        @if (tipoDocumento?.invalid && tipoDocumento?.touched) {
+        <div class="text-danger small mt-1">Selecciona un tipo de documento</div>
+        }
+      </div>
+
+      <!-- Número de documento -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Número de documento <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" placeholder="Ingresa tu número de documento"
+          formControlName="nroDocumento" maxlength="8"
+          (keydown)="$event.key >= '0' && $event.key <= '9' || $event.key === 'Backspace' || $event.key === 'Tab' ? true : $event.preventDefault()"
+          [class.is-invalid]="nroDocumento?.invalid && nroDocumento?.touched">
+        @if (nroDocumento?.invalid && nroDocumento?.touched) {
+        <div class="text-danger small mt-1">
+          @if (nroDocumento?.errors?.['required']) {
+          <span>El número de documento es requerido</span>
+          } @else if (nroDocumento?.errors?.['minlength']) {
+          <span>Mínimo 8 caracteres</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- NombreCompleto -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Nombre completo <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" placeholder="Ingresa tu nombre completo"
+          formControlName="nombreCompleto" [class.is-invalid]="nombreCompleto?.invalid && nombreCompleto?.touched">
+        @if (nombreCompleto?.invalid && nombreCompleto?.touched) {
+        <div class="text-danger small mt-1">
+          @if (nombreCompleto?.errors?.['required']) {
+          <span>El nombre completo es requerido</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Fecha de nacimiento -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Fecha de nacimiento <span class="text-danger">*</span></label>
+        <input type="date" class="form-control" formControlName="fechaNacimiento"
+          [class.is-invalid]="fechaNacimiento?.invalid && fechaNacimiento?.touched">
+        @if (fechaNacimiento?.invalid && fechaNacimiento?.touched) {
+        <div class="text-danger small mt-1">La fecha de nacimiento es requerida</div>
+        }
+      </div>
+
+      <!-- Correo -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Correo electrónico <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" placeholder="ejemplo@correo.com" formControlName="correo"
+          [class.is-invalid]="correo?.invalid && correo?.touched">
+        @if (correo?.invalid && correo?.touched) {
+        <div class="text-danger small mt-1">
+          @if (correo?.errors?.['required']) {
+          <span>El correo es requerido</span>
+          } @else if (correo?.errors?.['email']) {
+          <span>Ingresa un correo válido</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Dirección -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Dirección <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" placeholder="Ingresa tu dirección" formControlName="direccion"
+          [class.is-invalid]="direccion?.invalid && direccion?.touched">
+        @if (direccion?.invalid && direccion?.touched) {
+        <div class="text-danger small mt-1">
+          @if (direccion?.errors?.['required']) {
+          <span>La dirección es requerida</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Celular -->
+      <div class="mb-3">
+        <label class="form-label small fw-semibold">Número de celular <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <span class="input-group-text">+51</span>
+          <input type="tel" class="form-control" placeholder="999 999 999" formControlName="celular" maxlength="9"
+            [class.is-invalid]="celular?.invalid && celular?.touched">
+        </div>
+        @if (celular?.invalid && celular?.touched) {
+        <div class="text-danger small mt-1">
+          @if (celular?.errors?.['required']) {
+          <span>El celular es requerido</span>
+          } @else if (celular?.errors?.['minlength']) {
+          <span>Debe tener 9 dígitos</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-4">
+        <label class="form-label small fw-semibold">Contraseña <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input [type]="mostrarPassword ? 'text' : 'password'" class="form-control" placeholder="Mínimo 8 caracteres"
+            formControlName="contrasena" [class.is-invalid]="contrasena?.invalid && contrasena?.touched">
+          <button class="btn btn-outline-secondary" type="button" (click)="mostrarPassword = !mostrarPassword">
+            <i [class]="mostrarPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+          </button>
+        </div>
+        @if (contrasena?.invalid && contrasena?.touched) {
+        <div class="text-danger small mt-1">
+          @if (contrasena?.errors?.['required']) {
+          <span>La contraseña es requerida</span>
+          } @else if (contrasena?.errors?.['minlength']) {
+          <span>Mínimo 8 caracteres</span>
+          }
+        </div>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mb-3" [disabled]="cargando">
+        {{ cargando ? 'Registrando...' : 'Continuar' }}
+      </button>
+
+    </form>
+
+    <p class="text-center small text-muted">
+      ¿Ya tienes cuenta?
+      <a routerLink="/usuario/iniciar-sesion" class="text-primary fw-semibold">Iniciar sesión</a>
+    </p>
+
+    <p class="text-center mt-3">
+      <a routerLink="/" class="small text-muted">
+        <i class="fa-solid fa-arrow-left me-1"></i>Volver al inicio
+      </a>
+    </p>
+
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="sidebar d-flex flex-column">
+
+  <!-- Logo -->
+  <div class="sidebar-logo p-3 border-bottom">
+    <img src="/logo_hospital.png" alt="Hospital San José" height="50" onerror="this.style.display='none'">
+    <i>Hospital San Jose</i>
+  </div>
+
+  <!-- Links -->
+  <nav class="sidebar-nav flex-grow-1 p-3">
+    <ul class="list-unstyled d-flex flex-column gap-1">
+
+      <li>
+        <a class="sidebar-link" routerLink="/portal" routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <i class="fa-solid fa-house"></i>
+          <span>Inicio</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="sidebar-link" routerLink="/portal/mis-citas" routerLinkActive="active">
+          <i class="fa-regular fa-calendar"></i>
+          <span>Mis citas</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="sidebar-link" routerLink="/portal/documentos" routerLinkActive="active">
+          <i class="fa-regular fa-file-lines"></i>
+          <span>Documentos clínicos</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Botón agendar cita -->
+  <div class="p-3 border-top">
+    <a routerLink="/portal/agendar-cita" class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
+      <i class="fa-regular fa-calendar-plus"></i>
+      Agendar cita
+    </a>
+  </div>
+
+</div>

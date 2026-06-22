@@ -1,0 +1,139 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="d-flex align-items-center gap-2">
+    <a routerLink="/portal/agendar-cita" class="btn btn-sm btn-outline-secondary">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <h5 class="fw-bold mb-0">Cita virtual</h5>
+  </div>
+  <div class="dropdown">
+    <a href="#" class="btn btn-outline-secondary d-flex align-items-center gap-2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-regular fa-circle-user"></i>
+      <span class="small fw-semibold">Mi cuenta</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/portal/mis-datos">
+          <i class="fa-regular fa-user"></i> Mis datos
+        </a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2 text-danger" routerLink="/usuario/iniciar-sesion">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- AVISO -->
+<div class="alert d-flex align-items-center gap-3 mb-4"
+  style="background-color: rgba(19,127,236,0.08); border-color: rgba(19,127,236,0.2);">
+  <i class="fa-solid fa-video text-primary fa-lg"></i>
+  <span class="small">Tu cita será atendida por videollamada. Asegúrate de tener una conexión estable a internet y un
+    dispositivo con cámara y micrófono.</span>
+</div>
+
+<!-- FORMULARIO -->
+<div class="bg-white border rounded-3 p-4">
+  <h6 class="fw-bold mb-1">Completa los datos de tu cita</h6>
+  <p class="text-muted small mb-4">Selecciona la especialidad, médico y horario de tu preferencia</p>
+
+  <form [formGroup]="citaForm" (ngSubmit)="confirmar()">
+    <div class="row g-4">
+
+      <!-- Especialidad -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Especialidad <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="especialidad"
+          [class.is-invalid]="especialidad?.invalid && especialidad?.touched">
+          <option value="">Selecciona una especialidad</option>
+          @for (esp of especialidades; track $index) {
+          <option [value]="esp">{{ esp }}</option>
+          }
+        </select>
+        @if (especialidad?.invalid && especialidad?.touched) {
+        <div class="text-danger small mt-1">Selecciona una especialidad</div>
+        }
+      </div>
+
+      <!-- Médico -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Médico <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="medico" [class.is-invalid]="medico?.invalid && medico?.touched">
+          <option value="">Selecciona un médico</option>
+          @for (med of medicosFiltrados; track $index) {
+          <option [value]="med.nombre">{{ med.nombre }}</option>
+          }
+        </select>
+        @if (medico?.invalid && medico?.touched) {
+        <div class="text-danger small mt-1">Selecciona un médico</div>
+        }
+      </div>
+
+      <!-- Fecha -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Fecha <span class="text-danger">*</span></label>
+        <input type="date" class="form-control" formControlName="fecha"
+          [class.is-invalid]="fecha?.invalid && fecha?.touched">
+        @if (fecha?.invalid && fecha?.touched) {
+        <div class="text-danger small mt-1">Selecciona una fecha</div>
+        }
+      </div>
+
+      <!-- Hora -->
+      <div class="col-md-6">
+        <label class="form-label small fw-semibold">Hora <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="hora" [class.is-invalid]="hora?.invalid && hora?.touched">
+          <option value="">Selecciona un horario</option>
+          <option>08:00</option>
+          <option>09:00</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+        </select>
+        @if (hora?.invalid && hora?.touched) {
+        <div class="text-danger small mt-1">Selecciona un horario</div>
+        }
+      </div>
+
+      <!-- Motivo -->
+      <div class="col-12">
+        <label class="form-label small fw-semibold">Motivo de consulta</label>
+        <textarea class="form-control" rows="3" placeholder="Describe brevemente el motivo de tu consulta..."
+          formControlName="motivo"></textarea>
+      </div>
+
+      <!-- Seguro -->
+      <div class="col-12">
+        <label class="form-label small fw-semibold">Tipo de seguro</label>
+        <div class="d-flex gap-3">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="seguro" value="sis" id="sis">
+            <label class="form-check-label small" for="sis">SIS</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="seguro" value="particular" id="particular">
+            <label class="form-check-label small" for="particular">Particular</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end gap-3 mt-4">
+      <a routerLink="/portal/agendar-cita" class="btn btn-outline-secondary px-4">Cancelar</a>
+      <button type="submit" class="btn btn-primary px-4" [disabled]="cargando">
+        <i class="fa-regular fa-calendar-check me-2"></i>
+        {{ cargando ? 'Guardando...' : 'Confirmar cita' }}
+      </button>
+    </div>
+
+  </form>
+</div>

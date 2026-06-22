@@ -1,0 +1,10 @@
+.tipo-card {
+  transition: box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+
+.tipo-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  border-color: #137fec !important;
+}

@@ -1,0 +1,65 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h5 class="fw-bold mb-0">Agendar cita</h5>
+
+  <div class="dropdown">
+    <a href="#" class="btn btn-outline-secondary d-flex align-items-center gap-2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-regular fa-circle-user"></i>
+      <span class="small fw-semibold">Mi cuenta</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/portal/mis-datos">
+          <i class="fa-regular fa-user"></i> Mis datos
+        </a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2 text-danger" routerLink="/usuario/iniciar-sesion">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- SELECCIÓN DE TIPO DE CITA -->
+<div class="bg-white border rounded-3 p-4">
+  <h6 class="fw-bold mb-1">¿Qué tipo de cita deseas agendar?</h6>
+  <p class="text-muted small mb-4">Selecciona una opción para continuar</p>
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <a routerLink="/portal/cita-presencial" class="text-decoration-none">
+        <div class="border rounded-3 p-4 text-center tipo-card">
+          <div
+            class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width:64px;height:64px;">
+            <i class="fa-solid fa-hospital-user text-primary fa-xl"></i>
+          </div>
+          <h6 class="fw-bold mb-1">Cita presencial</h6>
+          <p class="text-muted small mb-0">Agenda tu consulta directamente en el hospital.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a routerLink="/portal/cita-virtual" class="text-decoration-none">
+        <div class="border rounded-3 p-4 text-center tipo-card">
+          <div
+            class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width:64px;height:64px;">
+            <i class="fa-solid fa-video text-primary fa-xl"></i>
+          </div>
+          <h6 class="fw-bold mb-1">Cita virtual</h6>
+          <p class="text-muted small mb-0">Consulta con tu médico desde casa por videollamada.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>

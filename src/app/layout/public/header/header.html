@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+  <div class="container-fluid px-4">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="logo_hospital.png" alt="Hospital San José" height="40" />
+    </a>
+
+    <!-- Texto-Inicio -->
+    <a class="navbar-brand" href="#">Hospital San José Callao</a>
+
+    <!-- Toggler mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navMenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/teleconsultas">Teleconsultas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/especialidades">Especialidades</a>
+        </li>
+        <!-- Icono usuario -->
+        <li class="nav-item dropdown" style="position: relative;">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-circle-user fa-xl"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/usuario/iniciar-sesion">
+            <i class="fa-solid fa-right-to-bracket"></i> Iniciar sesión
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/usuario/registrarme">
+            <i class="fa-solid fa-user-plus"></i> Registrarme
+          </a>
+        </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

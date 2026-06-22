@@ -1,0 +1,114 @@
+<!-- TOPBAR -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h5 class="fw-bold mb-0">Mis citas</h5>
+  <div class="dropdown">
+    <a href="#" class="btn btn-outline-secondary d-flex align-items-center gap-2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-regular fa-circle-user"></i>
+      <span class="small fw-semibold">Mi cuenta</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/portal/mis-datos">
+          <i class="fa-regular fa-user"></i> Mis datos
+        </a>
+      </li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2 text-danger" routerLink="/usuario/iniciar-sesion">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="bg-white border rounded-3 p-4">
+
+  <!-- TABS -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabActiva === 'proximas'" href="#"
+        (click)="$event.preventDefault(); cambiarTab('proximas')">
+        Próximas citas
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabActiva === 'historial'" href="#"
+        (click)="$event.preventDefault(); cambiarTab('historial')">
+        Historial
+      </a>
+    </li>
+  </ul>
+
+  <!-- CARGANDO -->
+  @if (cargando) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+    <p class="mt-2 text-muted small">Cargando citas...</p>
+  </div>
+  }
+
+  <!-- PRÓXIMAS CITAS -->
+  @if (!cargando && tabActiva === 'proximas') {
+  @if (citasProximas.length === 0) {
+  <div class="text-center py-5 text-muted">
+    <i class="fa-regular fa-calendar-xmark fa-3x mb-3"></i>
+    <h6 class="fw-semibold">No tienes citas programadas</h6>
+    <p class="small mb-4">Agenda tu próxima consulta médica de forma rápida y sencilla.</p>
+    <a routerLink="/portal/agendar-cita" class="btn btn-primary px-4">Agendar cita</a>
+  </div>
+  } @else {
+  <div class="d-flex flex-column gap-3">
+    @for (cita of citasProximas; track cita.idCita) {
+    <div class="border rounded-3 p-3 d-flex justify-content-between align-items-center">
+      <div>
+        <p class="fw-semibold mb-1">{{ cita.especialidad }} — {{ cita.medico }}</p>
+        <p class="text-muted small mb-1">
+          <i class="fa-regular fa-calendar me-1"></i>{{ cita.fecha }}
+          <span class="ms-2"><i class="fa-regular fa-clock me-1"></i>{{ cita.hora }}</span>
+        </p>
+        <p class="text-muted small mb-0">
+          <i class="fa-solid fa-shield me-1"></i>{{ cita.seguro | uppercase }}
+          <span class="ms-2 badge bg-warning text-dark">{{ cita.estado }}</span>
+        </p>
+      </div>
+      <button class="btn btn-sm btn-outline-danger" (click)="cancelarCita(cita.idCita!)">
+        Cancelar
+      </button>
+    </div>
+    }
+  </div>
+  }
+  }
+
+  <!-- HISTORIAL -->
+  @if (!cargando && tabActiva === 'historial') {
+  @if (citasHistorial.length === 0) {
+  <div class="text-center py-5 text-muted">
+    <i class="fa-regular fa-clock-rotate-left fa-3x mb-3"></i>
+    <h6 class="fw-semibold">No tienes historial de citas</h6>
+  </div>
+  } @else {
+  <div class="d-flex flex-column gap-3">
+    @for (cita of citasHistorial; track cita.idCita) {
+    <div class="border rounded-3 p-3 bg-light">
+      <p class="fw-semibold mb-1">{{ cita.especialidad }} — {{ cita.medico }}</p>
+      <p class="text-muted small mb-1">
+        <i class="fa-regular fa-calendar me-1"></i>{{ cita.fecha }}
+        <span class="ms-2"><i class="fa-regular fa-clock me-1"></i>{{ cita.hora }}</span>
+      </p>
+      <p class="text-muted small mb-0">
+        <i class="fa-solid fa-shield me-1"></i>{{ cita.seguro | uppercase }}
+        <span class="ms-2 badge bg-secondary">{{ cita.estado }}</span>
+      </p>
+    </div>
+    }
+  </div>
+  }
+  }
+
+</div>

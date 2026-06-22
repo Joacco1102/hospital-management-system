@@ -1,61 +1,148 @@
-# DesarrolloWeb06
-Desarrollo para entorno web - GRUPO 06
-# TrabajoFinal
+# 🏥 Hospital Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+> Sistema completo de gestión hospitalaria basado en arquitectura serverless en AWS
 
-## Development server
+![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?style=for-the-badge&logo=angular)
+![AWS](https://img.shields.io/badge/AWS-Serverless-orange?style=for-the-badge&logo=amazon-aws)
+![Status](https://img.shields.io/badge/status-production--simulated-success?style=for-the-badge)
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 ¿Qué es este proyecto?
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Este sistema simula una plataforma real de gestión hospitalaria con autenticación de usuarios, gestión de citas médicas y administración de información clínica.
 
-## Code scaffolding
+Está diseñado con una arquitectura moderna **frontend + backend serverless en AWS**, simulando un entorno de producción real.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🎯 Problema que resuelve
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Gestión manual de citas médicas
+- Falta de centralización de información de pacientes
+- Procesos clínicos no digitalizados
+- Baja escalabilidad en sistemas tradicionales
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## ⚙️ Solución implementada
 
-To build the project run:
+Sistema web con:
 
-```bash
-ng build
-```
+- 🧑‍⚕️ Gestión de usuarios
+- 📅 Reserva de citas médicas
+- 🏥 Visualización de servicios médicos
+- 🔐 Autenticación segura
+- 📊 Panel de administración interno
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+# ☁️ Arquitectura del sistema (AWS Serverless)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 🧠 Diagrama conceptual
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 🌐 Endpoint del sistema
+https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔗 API Endpoints
 
-## Additional Resources
+### 🔐 Auth
+- `/auth/register`
+- `/auth/login`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 📚 Catálogos
+- `/catalogos`
+- `/medicos`
+- `/modalidades`
+- `/seguros`
+- `/horarios`
+
+### 📅 Citas
+- `/citas`
+
+### 👤 Usuarios
+- `/usuario/{id}`
+- `/usuarios/{id}`
+
+### 📄 Documentos
+- `/documentos/{id}`
+
+---
+
+## 🗄️ Base de datos (DynamoDB)
+
+- TB_USUARIO
+- TB_CITAS
+- TB_MEDICOS
+- TB_HORARIOS
+
+---
+
+## ☁️ Arquitectura AWS utilizada
+
+- ⚡ AWS Lambda (lógica serverless)
+- 🌐 API Gateway (exposición REST)
+- 🗄️ DynamoDB (NoSQL database)
+- 📊 CloudWatch (logging y monitoreo)
+
+---
+
+## 🖥️ Frontend
+
+- Angular
+- Bootstrap
+- Arquitectura modular:
+  - Layout (Public / Private)
+  - Pages (Public / Private)
+  - Services (Auth, Citas, Usuario, Catálogo)
+  - Models (Usuario, Cita, Documento)
+
+---
+
+## 📸 Capturas del sistema
+
+### 🏠 Vista pública
+![Index Public](img/Index-public.png)
+
+### 🔐 Login
+![Login](img/Inicio-Sesion.png)
+
+### 🧭 Dashboard privado
+![Private](img/Index-Private.png)
+
+### 📅 Agendar cita
+![Cita](img/agendarCita-02.png)
+
+### 📋 Mis citas
+![Mis citas](img/Mis-Citas.png)
+
+---
+
+## 💡 Arquitectura destacada
+
+- Arquitectura serverless real en AWS
+- Separación frontend / backend
+- Microservicios en Lambda
+- Base de datos NoSQL escalable
+- API REST centralizada
+
+---
+
+## 👨‍💻 Autor
+
+**Joaquín Huamán**  
+Arquitectura de Datos | Cloud | BI | Desarrollo Web
+
+---
+
+## 📌 Estado
+
+✔ Funcional  
+✔ Backend desplegado en AWS  
+✔ Frontend Angular operativo  
+🚀 Listo para portafolio profesional

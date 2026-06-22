@@ -1,59 +1,83 @@
-# 🏥 Hospital Management System
+# 🏥 Hospital Management System (Serverless AWS)
 
-> Sistema completo de gestión hospitalaria basado en arquitectura serverless en AWS
-
-![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?style=for-the-badge&logo=angular)
-![AWS](https://img.shields.io/badge/AWS-Serverless-orange?style=for-the-badge&logo=amazon-aws)
-![Status](https://img.shields.io/badge/status-production--simulated-success?style=for-the-badge)
+> ⚡ Plataforma moderna de gestión hospitalaria construida con arquitectura **100% serverless en AWS**
+>
+> 🔥 Simula un sistema real en producción: autenticación, citas médicas y gestión clínica escalable.
 
 ---
 
 ## 🚀 ¿Qué es este proyecto?
 
-Este sistema simula una plataforma real de gestión hospitalaria con autenticación de usuarios, gestión de citas médicas y administración de información clínica.
+Este es un sistema web completo de gestión hospitalaria diseñado como solución cloud moderna.
 
-Está diseñado con una arquitectura moderna **frontend + backend serverless en AWS**, simulando un entorno de producción real.
+Implementa una arquitectura **frontend + backend serverless**, donde cada operación se ejecuta mediante funciones Lambda expuestas por API Gateway y persistidas en DynamoDB.
+
+👉 En pocas palabras:  
+Un sistema hospitalario escalable, modular y listo para producción en la nube.
 
 ---
 
 ## 🎯 Problema que resuelve
 
-- Gestión manual de citas médicas
-- Falta de centralización de información de pacientes
-- Procesos clínicos no digitalizados
-- Baja escalabilidad en sistemas tradicionales
+En entornos clínicos tradicionales existen problemas como:
+
+- 📉 Gestión manual de citas
+- 🧾 Información de pacientes dispersa
+- ⏳ Procesos lentos y no digitalizados
+- 🚫 Sistemas poco escalables
 
 ---
 
-## ⚙️ Solución implementada
+## 💡 Solución
 
-Sistema web con:
+Se construyó una plataforma que centraliza todo en la nube:
 
-- 🧑‍⚕️ Gestión de usuarios
-- 📅 Reserva de citas médicas
-- 🏥 Visualización de servicios médicos
-- 🔐 Autenticación segura
-- 📊 Panel de administración interno
-
----
-
-# ☁️ Arquitectura del sistema (AWS Serverless)
-
-## 🧠 Diagrama conceptual
+- 👤 Gestión de usuarios y autenticación
+- 📅 Reserva y administración de citas médicas
+- 🏥 Catálogo de servicios médicos
+- 🔐 Seguridad con API centralizada
+- 📊 Arquitectura preparada para escalar
 
 ---
 
-## 🌐 Endpoint del sistema
+## ☁️ Arquitectura del sistema (AWS Serverless)
+
+### 🧠 Vista general
+
+![Arquitectura AWS](img/Flujo-AWS.png)
+
+---
+
+### ⚙️ Stack cloud utilizado
+
+- ⚡ **AWS Lambda** → lógica del negocio (serverless)
+- 🌐 **API Gateway** → exposición de endpoints REST
+- 🗄️ **DynamoDB** → base de datos NoSQL
+- 📊 **CloudWatch** → logs, métricas y monitoreo
+
+---
+
+## 🔄 Flujo del sistema
+
+1. El usuario interactúa desde el frontend (Angular)
+2. Se envía una solicitud HTTP a la API
+3. API Gateway enruta la petición
+4. Lambda ejecuta la lógica del negocio
+5. DynamoDB guarda o consulta datos
+6. Se responde al usuario en tiempo real
+
+---
+
+## 🌐 API Base
 https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
-
 ---
 
-## 🔗 API Endpoints
+## 🔗 Endpoints principales
 
-### 🔐 Auth
-- `/auth/register`
-- `/auth/login`
+### 🔐 Autenticación
+- `POST /auth/register`
+- `POST /auth/login`
 
 ### 📚 Catálogos
 - `/catalogos`
@@ -83,53 +107,35 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
 ---
 
-## ☁️ Arquitectura AWS utilizada
+## 💻 Frontend
 
-- ⚡ AWS Lambda (lógica serverless)
-- 🌐 API Gateway (exposición REST)
-- 🗄️ DynamoDB (NoSQL database)
-- 📊 CloudWatch (logging y monitoreo)
+- Angular ⚡
+- Bootstrap 🎨
+- Arquitectura modular:
+  - Layouts (Public / Private)
+  - Pages
+  - Services (API, Auth, Citas)
+  - Models (Usuario, Cita, etc.)
 
 ---
 
-## 🖥️ Frontend
+## 🧠 Arquitectura destacada
 
-- Angular
-- Bootstrap
-- Arquitectura modular:
-  - Layout (Public / Private)
-  - Pages (Public / Private)
-  - Services (Auth, Citas, Usuario, Catálogo)
-  - Models (Usuario, Cita, Documento)
+✔ Serverless real en AWS  
+✔ Backend desacoplado del frontend  
+✔ Escalabilidad automática  
+✔ Alta disponibilidad  
+✔ Pago por uso (coste optimizado)  
 
 ---
 
 ## 📸 Capturas del sistema
 
-### 🏠 Vista pública
-![Index Public](img/Index-public.png)
-
-### 🔐 Login
-![Login](img/Inicio-Sesion.png)
-
-### 🧭 Dashboard privado
-![Private](img/Index-Private.png)
-
-### 📅 Agendar cita
-![Cita](img/agendarCita-02.png)
-
-### 📋 Mis citas
-![Mis citas](img/Mis-Citas.png)
-
----
-
-## 💡 Arquitectura destacada
-
-- Arquitectura serverless real en AWS
-- Separación frontend / backend
-- Microservicios en Lambda
-- Base de datos NoSQL escalable
-- API REST centralizada
+- 🏠 Vista pública  
+- 🔐 Login  
+- 🧭 Dashboard  
+- 📅 Agendamiento de citas  
+- 📋 Gestión de citas  
 
 ---
 
@@ -140,9 +146,9 @@ Arquitectura de Datos | Cloud | BI | Desarrollo Web
 
 ---
 
-## 📌 Estado
+## 🚀 Estado del proyecto
 
 ✔ Funcional  
 ✔ Backend desplegado en AWS  
-✔ Frontend Angular operativo  
-🚀 Listo para portafolio profesional
+✔ Frontend operativo  
+🔥 Listo para portafolio profesional / entrevistas

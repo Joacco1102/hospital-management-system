@@ -1,12 +1,12 @@
 # 🏥 Hospital Management System (Serverless AWS)
 
-> ⚡ Plataforma moderna de gestión hospitalaria construida con arquitectura **100% serverless en AWS**
+> Plataforma moderna de gestión hospitalaria construida con arquitectura **100% serverless en AWS**
 >
-> 🔥 Simula un sistema real en producción: autenticación, citas médicas y gestión clínica escalable.
+> Simula un sistema real en producción: autenticación, citas médicas y gestión clínica escalable.
 
 ---
 
-## 🚀 ¿Qué es este proyecto?
+## ¿Qué es este proyecto?
 
 Este es un sistema web completo de gestión hospitalaria diseñado como solución cloud moderna.
 
@@ -21,10 +21,10 @@ Un sistema hospitalario escalable, modular y listo para producción en la nube.
 
 En entornos clínicos tradicionales existen problemas como:
 
-- 📉 Gestión manual de citas
-- 🧾 Información de pacientes dispersa
-- ⏳ Procesos lentos y no digitalizados
-- 🚫 Sistemas poco escalables
+- Gestión manual de citas
+- Información de pacientes dispersa
+- Procesos lentos y no digitalizados
+- Sistemas poco escalables
 
 ---
 
@@ -32,23 +32,23 @@ En entornos clínicos tradicionales existen problemas como:
 
 Se construyó una plataforma que centraliza todo en la nube:
 
-- 👤 Gestión de usuarios y autenticación
-- 📅 Reserva y administración de citas médicas
-- 🏥 Catálogo de servicios médicos
-- 🔐 Seguridad con API centralizada
-- 📊 Arquitectura preparada para escalar
+- Gestión de usuarios y autenticación
+- Reserva y administración de citas médicas
+- Catálogo de servicios médicos
+- Seguridad con API centralizada
+- Arquitectura preparada para escalar
 
 ---
 
 ## ☁️ Arquitectura del sistema (AWS Serverless)
 
-### 🧠 Vista general
+### Vista general
 
 ![Arquitectura AWS](img/Flujo-AWS.png)
 
 ---
 
-### ⚙️ Stack cloud utilizado
+### Stack cloud utilizado
 
 - ⚡ **AWS Lambda** → lógica del negocio (serverless)
 - 🌐 **API Gateway** → exposición de endpoints REST
@@ -57,7 +57,7 @@ Se construyó una plataforma que centraliza todo en la nube:
 
 ---
 
-## 🔄 Flujo del sistema
+## Flujo del sistema
 
 1. El usuario interactúa desde el frontend (Angular)
 2. Se envía una solicitud HTTP a la API
@@ -98,7 +98,7 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
 ---
 
-## 🗄️ Base de datos (DynamoDB)
+## Base de datos (DynamoDB)
 
 - TB_USUARIO
 - TB_CITAS
@@ -107,10 +107,10 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
 ---
 
-## 💻 Frontend
+## Frontend
 
-- Angular ⚡
-- Bootstrap 🎨
+- Angular 
+- Bootstrap 
 - Arquitectura modular:
   - Layouts (Public / Private)
   - Pages
@@ -119,7 +119,7 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
 ---
 
-## 🧠 Arquitectura destacada
+## Arquitectura destacada
 
 ✔ Serverless real en AWS  
 ✔ Backend desacoplado del frontend  
@@ -129,13 +129,13 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 
 ---
 
-## 📸 Capturas del sistema
+##  Capturas del sistema
 
-- 🏠 Vista pública  
-- 🔐 Login  
-- 🧭 Dashboard  
-- 📅 Agendamiento de citas  
-- 📋 Gestión de citas  
+- Vista pública  
+- Login  
+- Dashboard  
+- Agendamiento de citas  
+- Gestión de citas  
 
 ---
 
@@ -145,10 +145,3 @@ https://706feh7y28.execute-api.us-east-1.amazonaws.com
 Arquitectura de Datos | Cloud | BI | Desarrollo Web
 
 ---
-
-## 🚀 Estado del proyecto
-
-✔ Funcional  
-✔ Backend desplegado en AWS  
-✔ Frontend operativo  
-🔥 Listo para portafolio profesional / entrevistas
